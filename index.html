@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fellowship & Opportunity Tracker - Tarruck Wheeler</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="container">
+                <div class="header-content">
+                    <h1>Fellowship & Opportunity Tracker</h1>
+                    <p class="header-subtitle">Stanford MIP Program - Cyber & Emerging Tech Policy</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="app-nav">
+            <div class="container">
+                <div class="nav-tabs">
+                    <button class="nav-tab active" data-view="dashboard">Dashboard</button>
+                    <button class="nav-tab" data-view="browser">Browse Opportunities</button>
+                    <button class="nav-tab" data-view="tracker">Application Tracker</button>
+                    <button class="nav-tab" data-view="calendar">Calendar</button>
+                    <button class="nav-tab" data-view="resources">Resources</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <div class="container">
+                
+                <!-- Dashboard View -->
+                <section id="dashboard-view" class="view active">
+                    <div class="dashboard-header">
+                        <h2>Dashboard Overview</h2>
+                        <p class="dashboard-date">Today: Thursday, June 19, 2025</p>
+                    </div>
+
+                    <!-- Key Metrics -->
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-number" id="total-opportunities">18</div>
+                            <div class="metric-label">Total Opportunities</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-number" id="open-opportunities">2</div>
+                            <div class="metric-label">Open Applications</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-number" id="high-priority">8</div>
+                            <div class="metric-label">High Priority</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-number" id="upcoming-deadlines">1</div>
+                            <div class="metric-label">Upcoming Deadlines</div>
+                        </div>
+                    </div>
+
+                    <!-- Status Breakdown -->
+                    <div class="dashboard-sections">
+                        <div class="dashboard-section">
+                            <h3>Application Status Overview</h3>
+                            <div class="status-grid">
+                                <div class="status-item">
+                                    <span class="status status--success">Open</span>
+                                    <span class="status-count">2</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status status--warning">Upcoming</span>
+                                    <span class="status-count">1</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status status--error">Closed</span>
+                                    <span class="status-count">11</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status status--info">TBD</span>
+                                    <span class="status-count">4</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Urgent Deadlines -->
+                        <div class="dashboard-section">
+                            <h3>Urgent Deadlines</h3>
+                            <div id="urgent-deadlines" class="urgent-list">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Chart -->
+                    <div class="dashboard-section">
+                        <h3>Application Timeline</h3>
+                        <div class="chart-container">
+                            <img src="https://pplx-res.cloudinary.com/image/upload/v1750358259/pplx_code_interpreter/44e1a6cf_pkn5q3.jpg" alt="Application Timeline Chart" class="timeline-chart">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Browse Opportunities View -->
+                <section id="browser-view" class="view">
+                    <div class="browser-header">
+                        <h2>Browse Opportunities</h2>
+                        <div class="search-controls">
+                            <input type="text" id="search-input" class="form-control" placeholder="Search opportunities...">
+                            <div class="filter-controls">
+                                <select id="type-filter" class="form-control">
+                                    <option value="">All Types</option>
+                                    <option value="Fellowship">Fellowship</option>
+                                    <option value="Internship">Internship</option>
+                                    <option value="Leadership Program">Leadership Program</option>
+                                </select>
+                                <select id="status-filter" class="form-control">
+                                    <option value="">All Status</option>
+                                    <option value="Open">Open</option>
+                                    <option value="Upcoming">Upcoming</option>
+                                    <option value="Closed">Closed</option>
+                                    <option value="TBD">TBD</option>
+                                    <option value="Future">Future</option>
+                                </select>
+                                <select id="priority-filter" class="form-control">
+                                    <option value="">All Priority</option>
+                                    <option value="High">High Priority</option>
+                                    <option value="Medium">Medium Priority</option>
+                                    <option value="Low">Low Priority</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="opportunities-list" class="opportunities-grid">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </section>
+
+                <!-- Application Tracker View -->
+                <section id="tracker-view" class="view">
+                    <div class="tracker-header">
+                        <h2>Application Tracker</h2>
+                        <p>Track your application progress and manage notes</p>
+                    </div>
+
+                    <div id="tracked-applications" class="tracker-grid">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </section>
+
+                <!-- Calendar View -->
+                <section id="calendar-view" class="view">
+                    <div class="calendar-header">
+                        <h2>Application Calendar</h2>
+                        <p>Timeline of deadlines and program start dates</p>
+                    </div>
+
+                    <div class="calendar-legend">
+                        <div class="legend-item">
+                            <span class="legend-dot deadline"></span>
+                            <span>Application Deadline</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot program-start"></span>
+                            <span>Program Start</span>
+                        </div>
+                    </div>
+
+                    <div id="calendar-timeline" class="calendar-container">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </section>
+
+                <!-- Resources View -->
+                <section id="resources-view" class="view">
+                    <div class="resources-header">
+                        <h2>Application Resources</h2>
+                        <p>Links, tips, and requirements for successful applications</p>
+                    </div>
+
+                    <div class="resources-grid">
+                        <div class="resource-section">
+                            <h3>Application Tips</h3>
+                            <ul class="resource-list">
+                                <li>Start applications early - many have rolling deadlines</li>
+                                <li>Tailor your personal statement to each program's focus area</li>
+                                <li>Highlight relevant coursework in cyber policy and emerging tech</li>
+                                <li>Connect your Stanford MIP experience to program goals</li>
+                                <li>Secure strong references from faculty and professionals</li>
+                            </ul>
+                        </div>
+
+                        <div class="resource-section">
+                            <h3>Required Documents</h3>
+                            <div class="document-checklist">
+                                <label class="checkbox-item">
+                                    <input type="checkbox"> Updated CV/Resume
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox"> Personal Statement
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox"> Academic Transcripts
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox"> Letters of Recommendation (2-3)
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox"> Writing Samples
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox"> Research Proposal (if applicable)
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="resource-section">
+                            <h3>Key Focus Areas</h3>
+                            <div class="focus-areas">
+                                <span class="focus-tag">Cyber Policy</span>
+                                <span class="focus-tag">AI Governance</span>
+                                <span class="focus-tag">Emerging Technologies</span>
+                                <span class="focus-tag">Digital Rights</span>
+                                <span class="focus-tag">Technology & Development</span>
+                                <span class="focus-tag">International Policy</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+        <!-- Opportunity Detail Modal -->
+        <div id="opportunity-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal-title"></h3>
+                    <button class="modal-close" id="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="modal-details"></div>
+                    <div class="modal-actions">
+                        <select id="application-status" class="form-control">
+                            <option value="">Select Status</option>
+                            <option value="interested">Interested</option>
+                            <option value="applied">Applied</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="accepted">Accepted</option>
+                        </select>
+                        <textarea id="opportunity-notes" class="form-control" placeholder="Add notes about this opportunity..."></textarea>
+                        <div class="modal-buttons">
+                            <button class="btn btn--primary" id="save-opportunity">Save Changes</button>
+                            <a id="apply-link" class="btn btn--outline" target="_blank">Visit Application</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
